@@ -1,19 +1,20 @@
 <div class="simpleDemo">
 
-  Cours
-  <span ng-bind="cours.message"></span>
+  <div class="container">
+    <h3>Cours</h3>
 
-  <div class="col-md-8">
-    <div class="row">
-      <div ng-repeat="(listName, list) in cours.models.lists" class="col-md-6">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">List
-              {{listName}}</h3>
-          </div>
-          <div class="panel-body">
+<p>Construisez votre séance de 4 enchaînements de 8 temps.
+  Glisser-déposer un coup, une cible et un coté par temps.
+</p>
 
-              <h3>Dropzone {{$index + 1}}</h3>
+    <div class="col-md-12">
+      <div class="row">
+        <div ng-repeat="(listName, list) in cours.models.lists" class="col-md-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{listName}}</h3>
+            </div>
+            <div class="panel-body">
 
               <ul dnd-list="list">
                 <!-- The dnd-draggable directive makes an element draggable and will
@@ -22,7 +23,6 @@
                              yourself using the dnd-moved attribute -->
                 <li ng-repeat="item in list"
                 dnd-draggable="item"
-                dnd-moved="list.splice($index, 1)"
                 dnd-effect-allowed="move"
                 dnd-selected="models.selected = item"
                 ng-class="{'selected': models.selected === item}">
@@ -30,11 +30,12 @@
                 </li>
               </ul>
 
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 
   <div class="col-md-12">
@@ -42,15 +43,16 @@
     <div ng-repeat="(comboName, combo) in cours.models.grid">
       <div class="row">
 
-        <div ng-repeat="(coupName, coup) in combo" class="col-sm-1">
+        <div ng-repeat="(coupName, coup) in combo" class="col-md-1">
 
-          <div class="panel panel-info">
+          <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title">{{comboName}}</h3>
+              <h3 class="panel-title"></h3>
             </div>
             <div class="panel-body">
 
-              <ul dnd-list="coup.list">
+              <ul dnd-list="coup.list"
+                  dnd-drop="cours.onDrop(coup.list, item, index)">
                 <li ng-repeat="item in coup.list"
                 dnd-draggable="item"
                 dnd-moved="coup.list.splice($index, 1)"
@@ -64,6 +66,24 @@
             </div>
           </div>
 
+        </div>
+
+        <div class="col-md-4">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Observations</h3>
+            </div>
+            <div class="panel-body">
+
+              <div class="form-group">
+               <textarea class="form-control"
+               rows="2" id="comment"
+               placeholder="Durée, musique, consignes ..."
+               ></textarea>
+             </div>
+
+            </div>
+          </div>
         </div>
 
       </div>

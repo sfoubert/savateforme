@@ -12,7 +12,7 @@
  * otherwise you can't drop to it once it's empty
  */
 .simpleDemo ul[dnd-list] {
-    min-height: 42px;
+    min-height: 75px;
     padding-left: 0px;
 }
 
@@ -60,4 +60,17 @@
 .simpleDemo ul[dnd-list] li.selected {
     background-color: #dff0d8;
     color: #3c763d;
+}
+
+
+/** Override bootstrap**/
+.simpleDemo .form-group {
+    margin-bottom: 5px;
+}
+.simpleDemo .panel-body {
+	padding: 5px;
+}
+.simpleDemo .col-md-1 {
+padding-left: 5px;
+padding-right: 5px;
 }
