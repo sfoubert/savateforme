@@ -1,11 +1,10 @@
 <div class="simpleDemo">
 
   <div class="container">
-    <h3>Cours</h3>
+    <h3 class="title">Cours</h3>
 
-<p>Construisez votre séance de 4 enchaînements de 8 temps.
-  Glisser-déposer un coup, une cible et un coté par temps.
-</p>
+    <p>Construisez votre séance de 4 enchaînements de 8 temps. Glisser-déposer un coup, une cible et un coté par temps.
+    </p>
 
     <div class="col-md-12">
       <div class="row">
@@ -21,11 +20,7 @@
                              transfer the object that was assigned to it. If an element was
                              dragged away, you have to remove it from the original list
                              yourself using the dnd-moved attribute -->
-                <li ng-repeat="item in list"
-                dnd-draggable="item"
-                dnd-effect-allowed="move"
-                dnd-selected="models.selected = item"
-                ng-class="{'selected': models.selected === item}">
+                <li ng-repeat="item in list" dnd-draggable="item" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
                   {{item.label}}
                 </li>
               </ul>
@@ -43,22 +38,23 @@
     <div ng-repeat="(comboName, combo) in cours.models.grid">
       <div class="row">
 
-        <div ng-repeat="(coupName, coup) in combo" class="col-md-1">
+        <div ng-repeat="(coupName, coup) in combo" ng-class="coup.class">
 
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title"></h3>
+              <h3 class="panel-title">
+                  <a ng-click="cours.unmerge(coup)">
+                    <span class="glyphicon glyphicon-triangle-left btn-sm" data-toggle="tooltip" data-placement="top" title="désassocier"></span>
+                  </a>
+                  <a ng-click="cours.merge(coup)">
+                    <span class="glyphicon glyphicon-triangle-right btn-sm" data-toggle="tooltip" data-placement="top" title="Associer"></span>
+                  </a>
+              </h3>
             </div>
             <div class="panel-body">
 
-              <ul dnd-list="coup.list"
-                  dnd-drop="cours.onDrop(coup.list, item, index)">
-                <li ng-repeat="item in coup.list"
-                dnd-draggable="item"
-                dnd-moved="coup.list.splice($index, 1)"
-                dnd-effect-allowed="move"
-                dnd-selected="models.selected = item"
-                ng-class="{'selected': models.selected === item}">
+              <ul dnd-list="coup.list" dnd-drop="cours.onDrop(coup.list, item, index)">
+                <li ng-repeat="item in coup.list" dnd-draggable="item" dnd-moved="coup.list.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
                   {{item.label}}
                 </li>
               </ul>
@@ -76,11 +72,8 @@
             <div class="panel-body">
 
               <div class="form-group">
-               <textarea class="form-control"
-               rows="2" id="comment"
-               placeholder="Durée, musique, consignes ..."
-               ></textarea>
-             </div>
+                <textarea class="form-control" rows="2" id="comment" placeholder="Durée, musique, consignes ..."></textarea>
+              </div>
 
             </div>
           </div>

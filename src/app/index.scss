@@ -27,6 +27,21 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
+.title {
+  font-family: 'Tangerine', serif;
+  text-shadow: 4px 4px 4px #aaa;
+}
+
+h1.title {
+  @extend .title;
+  font-size: 68px;
+}
+
+h3.title {
+@extend .title;
+font-size: 48px;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

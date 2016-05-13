@@ -1,18 +1,19 @@
 <nav class="navbar navbar-static-top navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
+      <a class="navbar-brand" ui-sref="myapp.presentation">
         <span class="glyphicon glyphicon-home"></span> Savate Forme
       </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li ng-class="{'active': vm.path === '/presentation'}">
           <a ui-sref="myapp.presentation">Presentation</a>
         </li>
-        <li><a ui-sref="myapp.cours">Cours</a></li>
-        <li><a ui-sref="myapp.contact">Contact</a></li>
+        <li ng-class="{'active': vm.path === '/cours'}">
+          <a ui-sref="myapp.cours">Cours</a>
+        </li>
       </ul>
 
       <!--ul class="nav navbar-nav navbar-right acme-navbar-text">
