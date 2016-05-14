@@ -6,12 +6,14 @@
     .controller('CoursController', CoursController);
 
   /** @ngInject */
-  function CoursController($scope, toastr, SAVATECONSTANTS) {
+  function CoursController($scope, toastr, SAVATECONSTANTS, $localStorage) {
     var vm = this;
 
     vm.onDrop = onDrop;
+    vm.onDropDisable = onDropDisable;
     vm.merge = merge;
     vm.unmerge = unmerge;
+    vm.print = print;
 
     vm.models = {
       selected: null,
@@ -29,14 +31,20 @@
     };
 
     var myGrid = [
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1]
-    ];
-
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1]
+      ];
 
     initModelGrid(myGrid);
+
+    // Override datas from storage
+    if ($localStorage.models != null) {
+      vm.models = $localStorage.models;
+    } else {
+      $localStorage.models = vm.models;
+    }
 
     function initModelGrid(grid) {
       vm.models.grid.combo1 = [];
@@ -65,6 +73,10 @@
       list.push(item);
       toastr.success(item.label + ' ajouté avec succès', item.type);
       return true;
+    }
+
+    function onDropDisable() {
+      return false;
     }
 
     function hasType(list, type) {

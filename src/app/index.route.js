@@ -27,12 +27,6 @@
      })
       .state('myapp.home', {
         url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
-      .state('myapp.presentation', {
-        url: '/presentation',
         templateUrl: 'app/presentation/presentation.html'
       })
       .state('myapp.cours', {

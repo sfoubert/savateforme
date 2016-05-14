@@ -15,12 +15,12 @@
             </div>
             <div class="panel-body">
 
-              <ul dnd-list="list">
-                <!-- The dnd-draggable directive makes an element draggable and will
-                             transfer the object that was assigned to it. If an element was
-                             dragged away, you have to remove it from the original list
-                             yourself using the dnd-moved attribute -->
-                <li ng-repeat="item in list" dnd-draggable="item" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
+              <ul dnd-list="list" dnd-drop="cours.onDropDisable()">
+                <li ng-repeat="item in list"
+                dnd-draggable="item"
+                dnd-effect-allowed="move"
+                dnd-selected="models.selected = item"
+                ng-class="{'selected': models.selected === item}">
                   {{item.label}}
                 </li>
               </ul>
@@ -28,12 +28,19 @@
             </div>
           </div>
         </div>
+
+      <!--div class="col-md-6 text-right">
+        <button class="btn btn-primary" ng-click="cours.print('cours')">
+          <span class="glyphicon  glyphicon-print"></span> Imprimer
+        </button>
+      </div-->
+
       </div>
 
     </div>
   </div>
 
-  <div class="col-md-12">
+  <div id="cours" class="col-md-12">
 
     <div ng-repeat="(comboName, combo) in cours.models.grid">
       <div class="row">
