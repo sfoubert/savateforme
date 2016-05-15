@@ -55,7 +55,7 @@
       } else {
         $localStorage.myGrid = myGrid;
       }
-      
+
     initModelGrid(myGrid);
 
     // Override datas from storage
@@ -111,9 +111,7 @@
 
     function merge(coup) {
       var grid = myGrid;
-      alert('grid ' + angular.toJson(grid));
       mergeCell(grid, coup.x, coup.y);
-      alert('grid ' + angular.toJson(grid));
       initModelGrid(grid);
     }
 
