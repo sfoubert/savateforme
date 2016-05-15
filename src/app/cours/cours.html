@@ -45,10 +45,10 @@
     <div ng-repeat="(comboName, combo) in cours.models.grid">
       <div class="row">
 
-        <div ng-repeat="(coupName, coup) in combo" ng-class="coup.class">
+        <div ng-repeat="(coupName, coup) in combo.coups" ng-class="coup.class">
 
           <div class="panel panel-primary">
-            <div class="panel-heading">
+            <div class="panel-heading text-right">
               <h3 class="panel-title">
                   <a ng-click="cours.unmerge(coup)">
                     <span class="glyphicon glyphicon-triangle-left btn-sm" data-toggle="tooltip" data-placement="top" title="désassocier"></span>
@@ -79,7 +79,7 @@
             <div class="panel-body">
 
               <div class="form-group">
-                <textarea class="form-control" rows="2" id="comment" placeholder="Durée, musique, consignes ..."></textarea>
+                <textarea class="form-control" rows="2" id="comment" ng-model="combo.observations" placeholder="Durée, musique, consignes ..."></textarea>
               </div>
 
             </div>

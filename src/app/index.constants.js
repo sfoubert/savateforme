@@ -31,6 +31,12 @@
       }, {
         label: "Revers latéral",
         type: 'coup'
+      }, {
+        label: "Décalage",
+        type: 'coup'
+      }, {
+        label: "Débordement",
+        type: 'coup'
       }],
       'cibles':[{
         label: "Figure",

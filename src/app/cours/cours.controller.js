@@ -23,10 +23,22 @@
         "cotes": SAVATECONSTANTS.cotes
       },
       grid: {
-        "combo1": [],
-        "combo2": [],
-        "combo3": [],
-        "combo4": []
+        "combo1": {
+          "observations": "",
+          "coups":[]
+        },
+        "combo2": {
+          "observations": "",
+          "coups":[]
+        },
+        "combo3": {
+          "observations": "",
+          "coups":[]
+        },
+        "combo4": {
+          "observations": "",
+          "coups":[]
+        }
       }
     };
 
@@ -37,24 +49,31 @@
         [1, 1, 1, 1, 1, 1, 1, 1]
       ];
 
+      // Override datas from storage
+      if ($localStorage.myGrid != null) {
+        myGrid = $localStorage.myGrid;
+      } else {
+        $localStorage.myGrid = myGrid;
+      }
+      
     initModelGrid(myGrid);
 
     // Override datas from storage
-    if ($localStorage.models != null) {
-      vm.models = $localStorage.models;
+    if ($localStorage.modelsGrid != null) {
+      vm.models.grid = $localStorage.modelsGrid;
     } else {
-      $localStorage.models = vm.models;
+      $localStorage.modelsGrid = vm.models.grid;
     }
 
     function initModelGrid(grid) {
-      vm.models.grid.combo1 = [];
-      vm.models.grid.combo2 = [];
-      vm.models.grid.combo3 = [];
-      vm.models.grid.combo4 = [];
+      vm.models.grid.combo1.coups = [];
+      vm.models.grid.combo2.coups = [];
+      vm.models.grid.combo3.coups = [];
+      vm.models.grid.combo4.coups = [];
       for (var j = 0; j < grid.length; j++) {
         for (var i = 0; i < grid[j].length; i++) {
 
-          vm.models.grid["combo" + (j + 1)].push({
+          vm.models.grid["combo" + (j + 1)].coups.push({
             "x": i,
             "y": j,
             "list": [],
@@ -92,7 +111,9 @@
 
     function merge(coup) {
       var grid = myGrid;
+      alert('grid ' + angular.toJson(grid));
       mergeCell(grid, coup.x, coup.y);
+      alert('grid ' + angular.toJson(grid));
       initModelGrid(grid);
     }
 
