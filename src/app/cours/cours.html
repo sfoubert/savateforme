@@ -16,11 +16,7 @@
             <div class="panel-body">
 
               <ul dnd-list="list" dnd-drop="cours.onDropDisable()">
-                <li ng-repeat="item in list"
-                dnd-draggable="item"
-                dnd-effect-allowed="move"
-                dnd-selected="models.selected = item"
-                ng-class="{'selected': models.selected === item}">
+                <li ng-repeat="item in list" dnd-draggable="item" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
                   {{item.label}}
                 </li>
               </ul>
@@ -29,11 +25,12 @@
           </div>
         </div>
 
-      <!--div class="col-md-6 text-right">
-        <button class="btn btn-primary" ng-click="cours.print('cours')">
-          <span class="glyphicon  glyphicon-print"></span> Imprimer
-        </button>
-      </div-->
+        <div class="col-md-6">
+          <!--button class="btn btn-default pull-right" ng-click="cours.deleteAll()">
+            <span class="glyphicon  glyphicon-remove"></span>
+            Tout effacer
+          </button-->
+        </div>
 
       </div>
 
@@ -49,13 +46,13 @@
 
           <div class="panel panel-primary">
             <div class="panel-heading text-right">
-              <h3 class="panel-title">
-                  <a ng-click="cours.unmerge(coup)">
-                    <span class="glyphicon glyphicon-triangle-left btn-sm" data-toggle="tooltip" data-placement="top" title="désassocier"></span>
-                  </a>
-                  <a ng-click="cours.merge(coup)">
-                    <span class="glyphicon glyphicon-triangle-right btn-sm" data-toggle="tooltip" data-placement="top" title="Associer"></span>
-                  </a>
+              <h3 class="panel-title">&nbsp;
+                <button class="btn btn-primary btn-sm" ng-click="cours.unmerge(coup)">
+                  <span class="glyphicon glyphicon-triangle-left" data-toggle="tooltip" data-placement="top" title="désassocier"></span>
+                </button>
+                <button class="btn btn-primary btn-sm" ng-click="cours.merge(coup)">
+                  <span class="glyphicon glyphicon-triangle-right btn-sm" data-toggle="tooltip" data-placement="top" title="Associer"></span>
+                </button>
               </h3>
             </div>
             <div class="panel-body">
